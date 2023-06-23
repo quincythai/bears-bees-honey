@@ -14,10 +14,23 @@ html {
   background-color: var(--berkeley-blue);
 }
 
+body {
+  color: var(--california-gold);
+  font-family: 'Open Sans', sans-serif;
+}
+
 .header {
-  font-family: 'TEAMSPIR';
+  font-family: 'TEAMSPIR', 'Open Sans', sans-serif;
   color: var(--california-gold);
   display: flex;
   justify-content: center;
   font-size: 40px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
