@@ -15,5 +15,9 @@ html {
 }
 
 .header {
-  color: 
+  font-family: 'TEAMSPIR';
+  color: var(--california-gold);
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
 }
