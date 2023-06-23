@@ -1,3 +1,19 @@
+:root {
+  --berkeley-blue: #003262;
+  --california-gold: #FDB515;
+  --founders-rock: #3B7EA1;
+  --medalist: #C4820E;
+}
+
+@font-face {
+  font-family: 'TEAMSPIR';
+  src: url(fonts/TEAMSPIR.TTF);
+}
+
 html {
-  background-color: #003262;
+  background-color: var(--berkeley-blue);
+}
+
+.header {
+  color: 
 }
