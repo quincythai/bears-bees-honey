@@ -63,6 +63,46 @@ body {
   justify-content: space-between;
 }
 
+.button-container {
+
+}
+
+.button {
+  border:#FDB515;
+  border-style: solid;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  margin-right: 10px;
+  background-position: center center;
+  background-size: cover;
+  padding: 10px;
+  background-clip: content-box;
+  background-color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.button:active {
+  opacity: 0.8;
+}
+
+#bear-button {
+  background-image: url(images/bear.jpeg);
+  background-size: 85%;
+}
+
+#bees-button {
+  background-image: url(images/bee.png);
+  background-size: 80%;
+}
+
+#honey-button {
+  background-image: url(images/honey.jpg);
+}
 
 .footer {
   position: fixed;
