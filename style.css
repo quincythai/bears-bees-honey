@@ -16,19 +16,17 @@ body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0; 
-  text-align: center;
 
-  display: flex;
+  display: flex; /* Enable the  */
   flex-direction: column;
   min-height: 100vh; /*  */
+
+  text-align: center;
 }
 
 .header {
   font-family: 'Marmellata', 'Open Sans', sans-serif;
   color: var(--california-gold);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 60px;
 }
 
@@ -41,12 +39,12 @@ body {
 }
 
 .rules {
-  text-align: center;
   font-size: 26px;
   font-weight: bold;
   font-style: italic;
 }
 
+/* To make the |'s in the sentences larger and center them*/
 .bracket {
   font-size: 1.5em;
   vertical-align: -0.15em;
@@ -112,8 +110,7 @@ body {
 }
 
 #bear-button {
-  background-image: url(images/bear.jpeg);
-  background-size: 85%;
+  background-image: url(images/bear.png);
 }
 
 #bees-button {
