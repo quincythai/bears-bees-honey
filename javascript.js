@@ -86,9 +86,9 @@ eventListener - function that executes when specified event (ex: click) occurs
 //element.addEventListener(eventType, eventListener)
 
 function game() {
-  const rockBtn = document.querySelector('#rock-btn');
-  const paperBtn = document.querySelector('#paper-btn');
-  const scissorsBtn = document.querySelector('#scissors-btn');
+  const rockBtn = document.querySelector('#bear-btn');
+  const paperBtn = document.querySelector('#bees-btn');
+  const scissorsBtn = document.querySelector('#honey-btn');
   // selects the element with id rock-btn and assigns it to rockBtn. Now, you can add eventListener to rockBtn, and modify its attributes, change styling, or perform any other actions JS allows on HTML elements.
 
   // doesn't work because JS evaluates function call (getComputerchoice()) immediately
