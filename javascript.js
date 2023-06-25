@@ -1,15 +1,25 @@
-/* Function returns rock, paper or scissors. (Bears, bees, honey)
-                      0     1         2 */
+let rounds = 0;
+let playerWins = 0;
+let computerWins = 0;
+const roundsParagraph = document.querySelector('#round-score');
+const myScoreParagraph = document.querySelector('#my-score');
+const cpuScoreParagraph = document.querySelector('#cpu-score');
+const bearsButton = document.querySelector('#bear-button');
+const beesButton = document.querySelector('#bees-button');
+const honeyButton = document.querySelector('#honey-button');
+const outcomeParagraph = document.querySelector('#outcome-paragraph');
+
+/* Returns random choice between Bear, Bee, Honey */
 function getComputerChoice() {
   let number = Math.floor(Math.random() * 3);
   let choice;
 
   switch (number) {
     case 0:
-      choice = "Bears";
+      choice = "Bear";
       break;
     case 1:
-      choice = "Bees";
+      choice = "Bee";
       break;
     case 2:
       choice = "Honey";
@@ -19,63 +29,72 @@ function getComputerChoice() {
   return choice;
 }
 
-let rounds = 0;
-let playerWins = 0;
-let computerWins = 0;
-
+/* Plays one rock, paper, scissors round */
 function playRound(playerChoice, computerChoice) {
-  let string;
+  let resultString;
+  let status;
 
   if (playerChoice === computerChoice) {
-    string = `You tied. ${playerChoice} ties ${computerChoice}.`;
-  } else if (playerChoice === "Bears" && computerChoice === "Honey" || 
-  playerChoice === "Bees" && computerChoice === "Bears" || 
-  playerChoice === "Honey" && computerChoice === "Bees") {
-    playerWins++;
-    string = `You win! ${playerChoice} beats ${computerChoice}!`;
+    status = "Tie";
+    resultString = `You tied. ${playerChoice} ties ${computerChoice}.`;
+  } else if (playerChoice === "Bear" && computerChoice === "Honey" || 
+    playerChoice === "Bee" && computerChoice === "Bear" || 
+    playerChoice === "Honey" && computerChoice === "Bee") {
+      status = "Win";
+      resultString = `You win! ${playerChoice} beats ${computerChoice}!`;
+      playerWins++;
   } else {
+    status = "Lose";
+    resultString = `You lost.. ${playerChoice} loses to ${computerChoice}.`;
     computerWins++;
-    string = `You lost.. ${playerChoice} lose to ${computerChoice}.`;
+  }
+  updateScores(resultString, status);
+  rounds++;
+
+  if (playerWins >= 5) {
+    endGame("You");
+  } else if (computerWins >= 5) {
+    endGame("Oski"); 
+  } else {
+    updateScores(resultString, status);
   }
 
-  rounds++;
-  updateScores(string);
 }
 
-const bearsButton = document.querySelector('#bear-button');
-const beesButton = document.querySelector('#bees-button');
-const honeyButton = document.querySelector('#honey-button');
-const outcomeParagraph = document.querySelector('#outcome-paragraph');
-
+/* Connect buttons to playerChoices and plays round with choice */
 function game() {
   bearsButton.addEventListener('click', () => {
-    handleButtonClick("Bears");
+    playRound("Bear", getComputerChoice())
   });
   beesButton.addEventListener('click', () => {
-    handleButtonClick("Bees");
+    playRound("Bee", getComputerChoice())
   });
   honeyButton.addEventListener('click', () => {
-    handleButtonClick("Honey");
+    playRound("Honey", getComputerChoice())
   });
 }
 
-function handleButtonClick(choice) {
-  playRound(choice, getComputerChoice());
-}
-
-const roundsParagraph = document.querySelector('#round-score');
-const myScoreParagraph = document.querySelector('#my-score');
-const cpuScoreParagraph = document.querySelector('#cpu-score');
-
-function updateScores(string) {
+function updateScores(resultString, status) {
   roundsParagraph.textContent = `Rounds: ${rounds}`;
   myScoreParagraph.textContent = `You: ${playerWins}`;
   cpuScoreParagraph.textContent = `Oski: ${computerWins}`;
-  outcomeParagraph.textContent = string;
+  outcomeParagraph.textContent = resultString;
+
+  if (status === "Win") {
+    outcomeParagraph.style.color = "Green";
+  } else if (status === "Tie") {
+    outcomeParagraph.style.color = "White";
+  } else {
+    outcomeParagraph.style.color = "Red";
+  }
 }
 
 function endGame(winner) {
-  outcomeParagraph.textContent = `The winner is: ${winner}`;
+  const winnerParagraph = document.querySelector('#winner-paragraph');
+  winnerParagraph.textContent = `The winner is: ${winner}!`;
+  bearsButton.disabled = true;
+  beesButton.disabled = true;
+  honeyButton.disabled = true;
 }
 
 game();

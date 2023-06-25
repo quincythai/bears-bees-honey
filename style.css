@@ -73,6 +73,14 @@ body {
   font-size: 30px;
 }
 
+#outcome-paragraph {
+  margin-bottom: 0;
+}
+
+#winner-paragraph {
+  color: var(--medalist);
+}
+
 .button-container {
   margin: 30px 0;
 }
