@@ -24,6 +24,9 @@ function getComputerChoice() {
     case 2:
       choice = "Honey";
       break;
+    default:
+      choice = "Unknown";
+      break;
   }
 
   return choice;
@@ -58,7 +61,44 @@ function playRound(playerChoice, computerChoice) {
   } else {
     updateScores(resultString, status);
   }
+}
 
+function updateScores(resultString, status) {
+  roundsParagraph.textContent = `Rounds: ${rounds}`;
+  myScoreParagraph.textContent = `You: ${playerWins}`;
+  cpuScoreParagraph.textContent = `Oski: ${computerWins}`;
+  outcomeParagraph.textContent = resultString;
+
+  outcomeParagraph.style.color = getColorFromStatus(status);
+}
+
+/* Announces winner, disables buttons. */
+function endGame(winner) {
+  const winnerParagraph = document.querySelector('#winner-paragraph');
+  winnerParagraph.textContent = `The winner is: ${winner}!`;
+  bearsButton.disabled = true;
+  beesButton.disabled = true;
+  honeyButton.disabled = true;
+}
+
+/* Returns text color based on status */
+function getColorFromStatus(status) {
+  let color;
+  switch (status) {
+    case "Win":
+      color = "Green";
+      break;
+    case "Tie":
+      color = "White";
+      break;
+    case "Lose":
+      color = "Red";
+      break;
+    default:
+      color = "Black";
+      break;
+  }
+  return color;
 }
 
 /* Connect buttons to playerChoices and plays round with choice */
@@ -74,27 +114,5 @@ function game() {
   });
 }
 
-function updateScores(resultString, status) {
-  roundsParagraph.textContent = `Rounds: ${rounds}`;
-  myScoreParagraph.textContent = `You: ${playerWins}`;
-  cpuScoreParagraph.textContent = `Oski: ${computerWins}`;
-  outcomeParagraph.textContent = resultString;
-
-  if (status === "Win") {
-    outcomeParagraph.style.color = "Green";
-  } else if (status === "Tie") {
-    outcomeParagraph.style.color = "White";
-  } else {
-    outcomeParagraph.style.color = "Red";
-  }
-}
-
-function endGame(winner) {
-  const winnerParagraph = document.querySelector('#winner-paragraph');
-  winnerParagraph.textContent = `The winner is: ${winner}!`;
-  bearsButton.disabled = true;
-  beesButton.disabled = true;
-  honeyButton.disabled = true;
-}
 
 game();
