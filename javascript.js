@@ -113,17 +113,35 @@ function getColorFromStatus(status) {
   return color;
 }
 
+function updateButtonBorder(status) {
+  getColorFromStatus(status);
+
+  if (status === "Win") {
+    
+  }
+}
+
+let playerChoice;
 /* Connect buttons to playerChoices and plays round with choice */
 function game() {
   bearsButton.addEventListener('click', () => {
-    playRound("Bear", getComputerChoice())
+    playerChoice = "Bear";
+    makePlayerChoice();
   });
   beesButton.addEventListener('click', () => {
-    playRound("Bee", getComputerChoice())
+    playerChoice = "Bee";
+    makePlayerChoice();
   });
   honeyButton.addEventListener('click', () => {
-    playRound("Honey", getComputerChoice())
+    playerChoice = "Honey";
+    makePlayerChoice();
   });
+
+  function makePlayerChoice() {
+    if (playerChoice) {
+      playRound(playerChoice, getComputerChoice());
+    }
+  }
 }
 
 
