@@ -51,9 +51,10 @@ function playRound(playerChoice, computerChoice) {
     resultString = `You lost.. ${playerChoice} loses to ${computerChoice}.`;
     computerWins++;
   }
+
   updateScores(resultString, status);
   rounds++;
-
+  
   if (playerWins >= 5) {
     endGame("You");
   } else if (computerWins >= 5) {
@@ -65,10 +66,21 @@ function playRound(playerChoice, computerChoice) {
 
 function updateScores(resultString, status) {
   roundsParagraph.textContent = `Rounds: ${rounds}`;
-  myScoreParagraph.textContent = `You: ${playerWins}`;
-  cpuScoreParagraph.textContent = `Oski: ${computerWins}`;
-  outcomeParagraph.textContent = resultString;
+  myScoreParagraph.innerHTML = "You: ";
+  cpuScoreParagraph.innerHTML = "Oski: ";
 
+  if (status === "Win") {
+    myScoreParagraph.innerHTML += `<span style="color: green">${playerWins}</span>`;
+    cpuScoreParagraph.innerHTML += `${computerWins}`;
+  } else if (status === "Lose") {
+    cpuScoreParagraph.innerHTML += `<span style="color: green">${computerWins}</span>`;
+    myScoreParagraph.innerHTML += `${playerWins}`;
+  } else {
+    myScoreParagraph.innerHTML += `<span style="color: white">${playerWins}</span>`;
+    cpuScoreParagraph.innerHTML += `<span style="color: white">${computerWins}</span>`;
+  }
+
+  outcomeParagraph.textContent = resultString;
   outcomeParagraph.style.color = getColorFromStatus(status);
 }
 
