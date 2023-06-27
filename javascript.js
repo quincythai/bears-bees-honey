@@ -122,6 +122,12 @@ function getColorFromStatus(status) {
 change their border color per round */
 function updateButtonBorder(status) {
   // reset each round
+  bearsButton.style.transition = "border-color 0.3s ease";
+  beesButton.style.transition = "border-color 0.3s ease";
+  honeyButton.style.transition = "border-color 0.3s ease";
+  playerButton.style.transition = "border-color 0.3s ease";
+  computerButton.style.transition = "border-color 0.3s ease";
+
   bearsButton.style.borderColor = "#FDB515";
   beesButton.style.borderColor = "#FDB515";
   honeyButton.style.borderColor = "#FDB515";
@@ -136,6 +142,7 @@ function updateButtonBorder(status) {
     computerButton.style.borderColor = "Green";
   }
 }
+
 
 let playerChoice;
 let playerButton;
