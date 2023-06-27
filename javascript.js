@@ -10,6 +10,7 @@ const honeyButton = document.querySelector('#honey-button');
 const outcomeParagraph = document.querySelector('#outcome-paragraph');
 
 /* Returns random choice between Bear, Bee, Honey */
+let computerButton;
 function getComputerChoice() {
   let number = Math.floor(Math.random() * 3);
   let choice;
@@ -17,12 +18,15 @@ function getComputerChoice() {
   switch (number) {
     case 0:
       choice = "Bear";
+      computerButton = bearsButton;
       break;
     case 1:
       choice = "Bee";
+      computerButton = beesButton;
       break;
     case 2:
       choice = "Honey";
+      computerButton = honeyButton;
       break;
     default:
       choice = "Unknown";
@@ -61,6 +65,7 @@ function playRound(playerChoice, computerChoice) {
     endGame("Oski"); 
   } else {
     updateScores(resultString, status);
+    updateButtonBorder(status, playerChoice, computerChoice);
   }
 }
 
@@ -113,26 +118,41 @@ function getColorFromStatus(status) {
   return color;
 }
 
+/* Based on who wins and lose, the button choices of the player and computer
+change their border color per round */
 function updateButtonBorder(status) {
-  getColorFromStatus(status);
+  // reset each round
+  bearsButton.style.borderColor = "#FDB515";
+  beesButton.style.borderColor = "#FDB515";
+  honeyButton.style.borderColor = "#FDB515";
 
-  if (status === "Win") {
-    
+  if (status === "Tie") {
+    playerButton.style.borderColor = "White";
+  } else if (status === "Win") {
+    playerButton.style.borderColor = "Green";
+    computerButton.style.borderColor = "Red";
+  } else {
+    playerButton.style.borderColor = "Red";
+    computerButton.style.borderColor = "Green";
   }
 }
 
 let playerChoice;
+let playerButton;
 /* Connect buttons to playerChoices and plays round with choice */
 function game() {
   bearsButton.addEventListener('click', () => {
+    playerButton = bearsButton;
     playerChoice = "Bear";
     makePlayerChoice();
   });
   beesButton.addEventListener('click', () => {
+    playerButton = beesButton;
     playerChoice = "Bee";
     makePlayerChoice();
   });
   honeyButton.addEventListener('click', () => {
+    playerButton = honeyButton;
     playerChoice = "Honey";
     makePlayerChoice();
   });
