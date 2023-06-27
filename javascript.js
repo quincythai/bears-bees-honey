@@ -96,6 +96,8 @@ function endGame(winner) {
   bearsButton.disabled = true;
   beesButton.disabled = true;
   honeyButton.disabled = true;
+
+  showGameOverScreen();
 }
 
 /* Returns text color based on status */
@@ -127,9 +129,7 @@ function updateButtonBorder(status) {
   honeyButton.style.transition = "border-color 0.3s ease";
 
   // Reset color to original color each round
-  bearsButton.style.borderColor = "#FDB515";
-  beesButton.style.borderColor = "#FDB515";
-  honeyButton.style.borderColor = "#FDB515";
+  resetBorderColor();
 
   // Change border color based on who won/lost
   if (status === "Tie") {
@@ -171,5 +171,51 @@ function game() {
   }
 }
 
+function showGameOverScreen() {
+  const overlay = document.getElementById("overlay");
+  const darkScreen = document.getElementById("darkScreen");
+  const restartButton = document.getElementById("restartButton");
+
+  overlay.style.display = "flex";
+
+  darkScreen.style.opacity = "0.5";
+  restartButton.style.opacity = "1";
+
+  restartButton.addEventListener('click', () => {
+    restartGame();
+  })
+}
+
+function restartGame() {
+  rounds = 0;
+  playerWins = 0;
+  computerWins = 0;
+
+  const winnerParagraph = document.querySelector('#winner-paragraph');
+  winnerParagraph.textContent = "";
+  const outcomeParagraph = document.getElementById("outcome-paragraph");
+  outcomeParagraph.textContent = "You are playing against Oski. Pick one to begin!";
+  outcomeParagraph.style.color = "#FDB515";
+
+  roundsParagraph.textContent = `Rounds: ${rounds}`;
+  myScoreParagraph.innerHTML = "You: 0";
+  cpuScoreParagraph.innerHTML = "Oski: 0";
+
+  bearsButton.disabled = false;
+  beesButton.disabled = false;
+  honeyButton.disabled = false;
+
+  overlay.style.display = "none";
+
+  darkScreen.style.opacity = "0";
+  restartButton.style.opacity = "0";
+}
+
+/* Resets all button borders to default color */
+function resetBorderColor() {
+  bearsButton.style.borderColor = "#FDB515";
+  beesButton.style.borderColor = "#FDB515";
+  honeyButton.style.borderColor = "#FDB515";
+}
 
 game();
