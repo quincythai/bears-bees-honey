@@ -16,22 +16,23 @@ body {
   font-family: 'Marmellata', sans-serif;
   margin: 0;
   padding: 0; 
+  height: 100%;
 
   display: flex; /* Enable vertical layout: header, main, footer  */
   flex-direction: column;
   min-height: 100vh; /* Force website to span the entire height of the viewport */
 
   text-align: center;
+  overflow: hidden;
 }
 
 .header {
   font-family: 'Marmellata', 'Open Sans', sans-serif;
-  font-size: 65px;
-  margin: 0px 0;
+  font-size: 50px;
 }
 
 .header h1 {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .rules p {
@@ -39,7 +40,7 @@ body {
 }
 
 .rules {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: bold;
   font-style: italic;
 }
@@ -57,7 +58,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1; /* Main grows to fill all space */
 }
 
 .container {
@@ -69,7 +69,7 @@ body {
 
 .main p {
   margin-bottom: 40px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 #outcome-paragraph {
@@ -81,7 +81,7 @@ body {
 }
 
 .button-container {
-  margin: 30px 0;
+  margin: 20px 0;
 }
 
 .scoreboard {
@@ -110,6 +110,7 @@ body {
 
 .button:hover {
   cursor: pointer;
+  transition: opacity 0.3s ease;
   opacity: 0.9;
 }
 
@@ -141,10 +142,10 @@ body {
 }
 
 .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
@@ -188,9 +189,4 @@ body {
 
 #restartButton:hover {
   cursor: pointer;
-  opacity: 0.9;
-}
-
-#restartButton:active {
-  opacity: 0.8;
 }

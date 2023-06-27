@@ -178,8 +178,10 @@ function showGameOverScreen() {
 
   overlay.style.display = "flex";
 
-  darkScreen.style.opacity = "0.5";
-  restartButton.style.opacity = "1";
+  setTimeout(function() {
+    darkScreen.style.opacity = "0.5";
+    restartButton.style.opacity = "1";
+  }, 100);
 
   restartButton.addEventListener('click', () => {
     restartGame();
@@ -209,6 +211,8 @@ function restartGame() {
 
   darkScreen.style.opacity = "0";
   restartButton.style.opacity = "0";
+
+  resetBorderColor();
 }
 
 /* Resets all button borders to default color */
