@@ -121,17 +121,17 @@ function getColorFromStatus(status) {
 /* Based on who wins and lose, the button choices of the player and computer
 change their border color per round */
 function updateButtonBorder(status) {
-  // reset each round
+  // Transition effect
   bearsButton.style.transition = "border-color 0.3s ease";
   beesButton.style.transition = "border-color 0.3s ease";
   honeyButton.style.transition = "border-color 0.3s ease";
-  playerButton.style.transition = "border-color 0.3s ease";
-  computerButton.style.transition = "border-color 0.3s ease";
 
+  // Reset color to original color each round
   bearsButton.style.borderColor = "#FDB515";
   beesButton.style.borderColor = "#FDB515";
   honeyButton.style.borderColor = "#FDB515";
 
+  // Change border color based on who won/lost
   if (status === "Tie") {
     playerButton.style.borderColor = "White";
   } else if (status === "Win") {
